@@ -2,9 +2,10 @@
   "name": "tsguardianbackend",
   "version": "1.0.0",
   "description": "Your AI-Powered TypeScript Code Analyst 🚀",
-  "main": "index.js",
+  "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api.js",
+    "dev":"nodemon api.js"
   },
   "keywords": [
     "typescript"
