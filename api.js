@@ -2,10 +2,12 @@ const express = require("express");
 const axios = require("axios");
 const dotenv = require("dotenv");
 const cors = require('cors');
+const helmet =require('helmet');
 dotenv.config();
 
 const app = express();
-app.use(cors())
+app.use(cors());
+app.use(helmet());
 const PORT = process.env.PORT || 7777;
 
 app.use(express.json());
