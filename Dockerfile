@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm","RUN" ,"api.js"]
+CMD ["node", "api.js"]
