@@ -12,6 +12,34 @@ app.use(express.json());
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
+app.get("/", (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>AI Code Analyzer</title>
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+                h1 { color: #333; }
+                p { font-size: 18px; }
+                a { color: #007BFF; text-decoration: none; font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <h1>Welcome to AI Code Analyzer</h1>
+            <p>This API analyzes TypeScript code and provides feedback on errors, improvements, and best practices.</p>
+            <p>Available APIs:</p>
+            <ul style="list-style-type:none;">
+                <li>🔍 <strong>POST /analyze-code</strong> - Analyze TypeScript code for issues and improvements.</li>
+            </ul>
+        </body>
+        </html>
+    `);
+});
+
+
 // AI Code Analysis Endpoint
 app.post("/analyze-code", async (req, res) => {
     const { code } = req.body;

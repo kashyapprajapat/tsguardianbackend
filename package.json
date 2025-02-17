@@ -5,7 +5,7 @@
   "main": "api.js",
   "scripts": {
     "start": "node api.js",
-    "dev":"nodemon api.js"
+    "dev": "nodemon api.js"
   },
   "keywords": [
     "typescript"
