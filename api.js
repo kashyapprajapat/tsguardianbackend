@@ -3,6 +3,7 @@ const axios = require("axios");
 const dotenv = require("dotenv");
 const cors = require('cors');
 const helmet =require('helmet');
+const rateLimit = require('express-rate-limit');
 dotenv.config();
 
 const app = express();
@@ -11,6 +12,15 @@ app.use(helmet());
 const PORT = process.env.PORT || 7777;
 
 app.use(express.json());
+
+const limiter = rateLimit({
+    windowMs: 60 * 1000, 
+    max: 5,
+    message: "<h1>Rate limiting exceeded. Please try again later.</h1>",
+  });
+  
+  app.use(limiter);
+  
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
